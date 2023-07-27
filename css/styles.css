@@ -1,6 +1,8 @@
 :root {
     --fundo-de-tela:#7FFFD4;
     --borda-caixa:#E0FFFF;
+    --botao-adicionar: #4682B4;
+    --branco-primario:#ffffff;
 }
 
 body {
@@ -11,27 +13,86 @@ body {
     box-sizing: border-box;
 }
 
+.principal {
+    padding: 10vh 3em 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 2em;
+}
+
 .adicionar {
     background-color: var(--borda-caixa);
-    margin:10em 0 0 2em;
     border-radius: 20px;
+    display: flex;
+    flex-grow: 1;
+    flex-basis: auto;
+    min-width: 600px;
+    padding: 4em 2em 2em;
+    border-radius: 10px;
+    gap: 2em;
+    
 }
 
 .container{
     display: flex;
     justify-content: center;
-    width:45%;
+   width: 70%;
 }
 
 .imagem_dinheiro {
-    margin: 5%;
-    width:40%;
-    height:82%;
+    margin: 2em 3.5em;
+    width:65%;
+    height:60%;
 }
 
 
-.adicionar__itens__informacoes {
+.adicionar__itens {
   display: flex;
   flex-direction: column;
-  margin-top:35%;
+  gap: 0.7em;
+  justify-content: center;
+  margin: 2em 2.5em;
+  
+}
+
+.adicionar__itens input {
+    width:16.2em;
+    height: 2.5em;
+    border: 2px solid var(--botao-adicionar);
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+.cadastrar {
+background-color: var(--botao-adicionar);
+color:var(--branco-primario) ;
+cursor: pointer;
+}
+
+.lista {
+   display: block;
+   margin-right: 300px;
+   padding:0;
+}
+
+.lista__item {
+    list-style: none;
+    padding: 0.6em 2em;
+    background: var(--branco-primario);
+    border-radius: 10px;
+    margin: 0 0 1em;
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    gap: 1em;
+    font-size: 20px;
+}
+
+.lista__forte {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    font-weight: 400;
+    color: var(--botao-adicionar);
 }
