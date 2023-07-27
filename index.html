@@ -4,31 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cash Money</title>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="./assets/img/imagem_de_dinheiro.png" type="image/x-icon">
     <link rel="stylesheet" href="./css/styles.css">
     <script src="./js/main.js" defer></script>
 </head>
 <body>
   <main class="principal">
     <div>
-        <form action="" class="container adicionar">
+        <div action="" class="container adicionar">
            <picture>
             <img class="imagem_dinheiro" src="./assets/img/imagem_de_dinheiro.png" alt="icone de dinheiro">
-           </picture>
-           <div class="adicionar__itens">
-            <div class="adicionar__itens__informacoes">
+          </picture>
+          <form class="adicionar__itens" id="formulario">
                 <label for="nome">Nome</label>
                 <input type="text" name="nome" id="nome">
-                <label for="preco">Preço</label>
-                <input type="number" name="preco" id="preco">
-                <input type="submit" value="Adicionar">
-            </div>
-           </div>  
-        </form>
+                <label for="preco"> Preço</label>
+                <input type="number" name="preco" id="preco" step="0.01" min="0" placeholder="R$">
+                <input type="submit" value="Adicionar" class="cadastrar">
+           </form>  
+          </div>
     </div>
-    <ul>
-        <li>3ds <strong>500</strong></li>
-        <li>sapato <strong>200</strong></li>
+    <ul class="lista" id="lista">
+        <li class="lista__item">3ds <strong class="lista__forte">R$500</strong></li>
+        <li class="lista__item">sapato <strong class="lista__forte">R$200</strong></li>
     </ul>
   </main>
     
