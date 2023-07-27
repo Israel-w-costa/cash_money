@@ -1,36 +1,45 @@
 const formulario = document.querySelector ("#formulario")
-const nome = document.querySelector ("#nome")
-const preco = document.querySelector ("#preco")
+const itens = JSON.parse(localStorage.getItem("itens")) || []
+
+itens.forEach( (element) => {
+    criarElemento (element)
+    
+});
 
 formulario.addEventListener ("submit", (evento) => {
     evento.preventDefault ()
+    const nome = evento.target.elements["nome"]
+    const preco =evento.target.elements ["preco"]
+    const itemAtual = {
+        "nome": nome.value,
+        "preco": preco.value,
+    }
+
+    criarElemento (itemAtual)
+
+    itens.push (itemAtual)
     
-    criarElemento (evento.target.nome.value,evento.target.preco.value)
-    
+    localStorage.setItem ("itens",JSON.stringify (itens))
+
     nome.value = ""
     preco.value= ""
 
 }
 )
 
-function criarElemento (nome, preco) {
+function criarElemento (item) {
     const lista = document.querySelector ("#lista")
     
     const novoItem = document.createElement ('li')
     novoItem.classList.add ("lista__item")
     const novoEfeito =document.createElement ('strong')
     novoEfeito.classList.add ("lista__forte")
-    novoEfeito.innerHTML = preco
+    novoEfeito.innerHTML = "R$ " + item.preco
 
-    novoItem.innerHTML += nome
+    novoItem.innerHTML += item.nome
     novoItem.appendChild (novoEfeito)
 
     lista.appendChild (novoItem)
     
-    console.log (novoItem)
-    
-
 
 }
-
-console.log (nome, preco)
