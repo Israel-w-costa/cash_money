@@ -10,14 +10,31 @@ formulario.addEventListener ("submit", (evento) => {
     evento.preventDefault ()
     const nome = evento.target.elements["nome"]
     const preco =evento.target.elements ["preco"]
+    const quantidade = evento.target.elements ["quantidade"]
+    const existe = itens.find (elemento => elemento.nome === nome.value)
+    const caixaDialogo = document.querySelector ("#dialogo")
+    const reescrever = document.querySelector ("#reescrever")
+    const adicionar = document.querySelector ("#adicionar")
+
     const itemAtual = {
         "nome": nome.value,
         "preco": preco.value,
+        "quantidade":quantidade.value
     }
 
-    criarElemento (itemAtual)
+    if (existe) {
+       itemAtual = existe.id
+       atualizarElementos (itemAtual)
+       itens [itens.findIndex (elemento => elemento.id === existe.id)] = itemAtual
+       calculaPreco (itemAtual)
 
-    itens.push (itemAtual)
+    } else {
+        itemAtual.id = itens[itens.lenght -1] ? itens [itens.lenght -1]+1 : 0
+
+        criarElemento (itemAtual)
+        itens.push (itemAtual)
+    }
+
     
     localStorage.setItem ("itens",JSON.stringify (itens))
 
@@ -34,16 +51,28 @@ function criarElemento (item) {
     novoItem.classList.add ("lista__item")
     const novoEfeito =document.createElement ('strong')
     novoEfeito.classList.add ("lista__forte")
-    novoEfeito.dataset = item.id
+    novoEfeito.dataset.id = item.id
     novoEfeito.innerHTML = "R$ " + item.preco
-
+    novoQuantidade = document.createElement ('span')
+    novoQuantidade.classList.add ('lista__quantidade')
+    novoQuantidade.innerHTML +=  item.quantidade
+    novoItem.appendChild (novoQuantidade)
     novoItem.innerHTML += item.nome
+    
     novoItem.appendChild (novoEfeito)
     novoItem.appendChild (botaoDeleta(item.id))
 
     lista.appendChild (novoItem)
     
 
+}
+
+function atualizarElementos (item) {
+    document.querySelector("[data-id='"+item.id+"']").innerHTML = item.quantidade
+}
+
+function calculaPreco (item) {
+    document.querySelector("[data-id='"+item.id+"']").innerHTML = item.preco
 }
 
 function botaoDeleta (id) {
@@ -60,7 +89,7 @@ function botaoDeleta (id) {
 } 
 
 function deleteBotao (tag, id) {
-    itens.splice ( itens.find (elemento => elemento.id ),1)    
+    itens.splice ( itens.findIndex (elemento => elemento.id ),1)    
     localStorage.setItem ("itens",JSON.stringify (itens))
 
     tag.remove ()

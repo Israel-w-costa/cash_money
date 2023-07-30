@@ -41,7 +41,7 @@ body {
 
 .imagem_dinheiro {
     margin: 2em 3.5em;
-    width:65%;
+    width:70%;
     height:60%;
 }
 
@@ -86,6 +86,20 @@ cursor: pointer;
     align-items: center;
     gap: 1em;
     font-size: 20px;
+}
+
+.lista__quantidade {
+    background-color: var(--fundo-de-tela);
+    color: #4682B4;
+    border: 2px solid var(--fundo-de-tela-);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width:0.1em;
+    height: 0.1em;
+    padding:1em;
+    
 }
 
 .lista__forte {

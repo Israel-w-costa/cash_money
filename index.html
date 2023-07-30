@@ -18,6 +18,8 @@
           <form class="adicionar__itens" id="formulario">
                 <label for="nome">Nome</label>
                 <input type="text" name="nome" id="nome">
+                <label for="quantidade">Quantidade</label>
+                <input type="number" name="quantidade" id="quantidade">
                 <label for="preco"> Preço</label>
                 <input type="number" name="preco" id="preco" step="0.01" min="0" placeholder="R$">
                 <input type="submit" value="Adicionar" class="cadastrar">
@@ -26,6 +28,12 @@
     </div>
     <ul class="lista" id="lista">
     </ul>
+    <dialog id="dialogo">
+      <h1>Opa esse item já existe você gostaria de reescrever esse item na sua lista ou adicionar com o ja existente ? </h1>
+      <button id="reescrever">reescrever</button>
+      <button id="adicionar">adicionar</button>
+
+    </dialog>
   </main>
     
 </body>
