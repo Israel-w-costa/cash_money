@@ -1,5 +1,5 @@
 const formulario = document.querySelector ("#formulario")
-const itens = JSON.parse(localStorage.getItem("itens")) || []
+const itens = JSON.parse(localStorage.getItem("itens"))  || []
 
 itens.forEach( (element) => {
     criarElemento (element)
@@ -25,11 +25,10 @@ formulario.addEventListener ("submit", (evento) => {
     if (existe) {
        itemAtual = existe.id
        atualizarElementos (itemAtual)
-       itens [itens.findIndex (elemento => elemento.id === existe.id)] = itemAtual
-       calculaPreco (itemAtual)
-
+       const index =  [itens.findIndex (elemento => elemento.id === existe.id)] 
+       itens [index] = itemAtual
     } else {
-        itemAtual.id = itens[itens.lenght -1] ? itens [itens.lenght -1]+1 : 0
+        itemAtual.id = itens [itens.length -1] ? itens [itens.length -1] + 1 : 0 
 
         criarElemento (itemAtual)
         itens.push (itemAtual)
@@ -40,6 +39,8 @@ formulario.addEventListener ("submit", (evento) => {
 
     nome.value = ""
     preco.value= ""
+    quantidade.value = ""
+    
 
 }
 )
